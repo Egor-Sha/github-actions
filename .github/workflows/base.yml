@@ -1,4 +1,4 @@
-name: hi
+name: Hi Workflow
 on: push
 jobs: 
   any-name-job:
