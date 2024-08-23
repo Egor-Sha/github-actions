@@ -12,3 +12,11 @@ jobs:
         ls -a
     - name: Read readme
       run: cat README.md
+  another-job:
+    needs: any-name-job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Tell smth
+      uses: actions/checkout@v4
+    - name: Say smth
+      run: echo "Second job"
