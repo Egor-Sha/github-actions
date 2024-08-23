@@ -1,0 +1,14 @@
+name: hi
+on: push
+jobs: 
+  any-name-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout to find repo
+      uses: actions/checkout@v4
+    - name: Welcome
+      run: echo "Hi repo"
+    - name: Files
+      run: ls -a
+    - name: Read readme
+      run: cat README.md
