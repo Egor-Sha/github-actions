@@ -12,11 +12,32 @@ jobs:
         ls -a
     - name: Read readme
       run: cat README.md
-  another-job:
+
+  prepare-job:
     needs: any-name-job
     runs-on: ubuntu-latest
     steps:
-    - name: Tell smth
-      uses: actions/checkout@v4
-    - name: Say smth
-      run: echo "Second job"
+      - name: Install Cowsay
+        run: sudo apt-get install cowsay -y
+      - name: Execute Cowsay
+        run: cowsay -f dragon "Rr-rr" >> dragon.txt
+      - name: Upload txt as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-inside
+          path: dragon.txt
+      - name: Sleep a bit
+        run: sleep 5
+  
+  show-job:
+    needs: prepare-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download txt as artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dragon-inside   
+      - name: Read and show
+        run: cat dragon.txt
+      - name: Say smth
+        run: echo "Third job"
