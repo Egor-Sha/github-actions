@@ -1,4 +1,4 @@
-name: hi
+name: hi (old)
 on: push
 jobs: 
   any-name-job:
