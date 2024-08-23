@@ -7,8 +7,8 @@ jobs:
     - name: Checkout to find repo
       uses: actions/checkout@v4
     - name: Welcome
-      run: echo "Hi repo"
-    - name: Files
-      run: ls -a
+      run: |
+        echo "Hi repo"
+        ls -a
     - name: Read readme
       run: cat README.md
